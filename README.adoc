@@ -1,0 +1,38 @@
+= Soft Assertions - demo
+:toc:
+:toc-placement:
+:toclevels: 3
+:icons: font
+:note-caption: :information_source:
+
+== Introduction
+
+Given it's the advent of a new year, I thought let's start with something nice and fun that can make live more enjoyable for everyone.
+
+As developers, we write testcases all the time to help us in our development process, and to help us detect potential regressions in the future.
+
+Now ideally we want our testcases to be as efficient as possible, and ideally to require as few reruns as possible. And this is where Soft Assertions come into play.
+
+== Hard Assertions vs Soft Assertions
+
+=== What's a "Hard" assertion?
+
+=== What's a "Soft" assertion?
+
+== Library support
+
+[cols="1,1"]
+|===
+|Framework|Supported
+| JUnit | [x]
+| AssertJ | [x]
+| Hamcrest | [ ]
+| TestNG | [x]
+| Truth | [ ]
+|===
+
+== Takeaway
+
+== References
+
+* https://github.com/SimonVerhoeven/soft-assertions[This repository]
