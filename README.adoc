@@ -21,6 +21,8 @@ Now ideally we want our testcases to be as efficient as possible, and ideally to
 
 == Library support
 
+Some of the most commonly used Assertion libraries have out of the box support for soft assertions, sadly, not all of them do.
+
 [cols="1,1"]
 |===
 |Framework|Supported
@@ -30,6 +32,12 @@ Now ideally we want our testcases to be as efficient as possible, and ideally to
 | TestNG | [x]
 | Truth | [ ]
 |===
+
+=== Junit
+
+=== AssertJ
+
+=== TestNG
 
 == Takeaway
 
