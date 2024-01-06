@@ -1,4 +1,11 @@
 package dev.simonverhoeven.softassertions;
 
-public class AssertJSoftTest {
+import org.junit.jupiter.api.Test;
+
+class AssertJSoftTest {
+
+    @Test
+    void softAssert() {
+
+    }
 }

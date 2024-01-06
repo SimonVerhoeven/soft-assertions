@@ -1,4 +1,11 @@
 package dev.simonverhoeven.softassertions;
 
-public class JUnitHardTest {
+import org.junit.jupiter.api.Test;
+
+class JUnitHardTest {
+
+    @Test
+    void hardAssert() {
+
+    }
 }

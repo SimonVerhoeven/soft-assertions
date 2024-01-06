@@ -1,4 +1,11 @@
 package dev.simonverhoeven.softassertions;
 
-public class TestNGSoftTest {
+import org.junit.jupiter.api.Test;
+
+class TestNGSoftTest {
+
+    @Test
+    void softAssert() {
+
+    }
 }
