@@ -9,9 +9,10 @@ import java.time.Month;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JUnitHardTest {
-    
+
     @Test
     void hardAssert() {
+        // Given
         Person person1 = new Person(
                 "John Doe",
                 "English",
@@ -30,9 +31,11 @@ class JUnitHardTest {
                 LocalDate.of(1982, Month.APRIL, 1)
         );
 
+        // When
         var personRecord1 = PersonMapper.entityToRecord(person1);
         var personRecord2 = PersonMapper.entityToRecord(person2);
 
+        // Then
         assertEquals(person1.getName(), personRecord1.name());
         assertEquals(person1.getMainLanguage(), personRecord1.mainLanguage());
         assertEquals(person1.getEmail(), personRecord1.email());
@@ -40,7 +43,6 @@ class JUnitHardTest {
         assertEquals(person1.getPhoneNumber(), personRecord1.phoneNumber());
         assertEquals(person1.getDateOfBirth().toString(), personRecord1.dateOfBirth());
 
-        // Assertions for person2
         assertEquals(person2.getName(), personRecord2.name());
         assertEquals(person2.getMainLanguage(), personRecord1.mainLanguage());
         assertEquals(person2.getEmail(), personRecord2.email());
