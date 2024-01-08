@@ -2,7 +2,6 @@ package dev.simonverhoeven.softassertions;
 
 import org.junit.jupiter.api.Test;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 
