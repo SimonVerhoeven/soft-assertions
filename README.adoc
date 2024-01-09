@@ -50,6 +50,12 @@ All our assertions will be executed.
 You can set up something for this yourself, or certain libraries also handle this for you as we'll cover later.
 
 
+=== So when should we use them?
+
+Ideally when you're performing more than one assertion on the same object.
+I dislike flaky tests, and having to run the same test multiple times just to figure out what's wrong with for example the mapping of a single object.
+
+
 == Library support
 
 Some of the most commonly used Assertion libraries have out of the box support for soft assertions, sadly, not all of them do.
@@ -64,6 +70,10 @@ Some of the most commonly used Assertion libraries have out of the box support f
 | Truth | [ ]
 |===
 
+As of the moment of writing Truth does have an open pull request for this, but it's been in that state for a couple of years.
+
+TIP: In case you know of another library that supports soft assertions, please do let me know and I'll add it to this list.
+
 === Junit
 
 === AssertJ
@@ -75,3 +85,8 @@ Some of the most commonly used Assertion libraries have out of the box support f
 == References
 
 * https://github.com/SimonVerhoeven/soft-assertions[This repository]
+* https://junit.org/junit5/[JUnit]
+* https://github.com/assertj/assertj[AssertJ]
+* https://github.com/hamcrest/JavaHamcrest[Hamcrest]
+* https://testng.org/[TestNG]
+* https://truth.dev/[Truth]
