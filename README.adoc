@@ -15,9 +15,40 @@ Now ideally we want our testcases to be as efficient as possible, and ideally to
 
 == Hard Assertions vs Soft Assertions
 
-=== What's a "Hard" assertion?
+=== "Hard" assertion
 
-=== What's a "Soft" assertion?
+These are the traditional assertions that everyone's used to seeing, we assert field by field, and halt as soon as one assertion fails. Hence, "hard" assertions.
+
+For example
+
+[code,java]
+----
+assertEquals(person1.getName(), personRecord1.name());
+assertEquals(person1.getMainLanguage(), personRecord1.mainLanguage());
+assertEquals(person1.getEmail(), personRecord1.email());
+assertEquals(person1.getAddress(), personRecord1.address());
+assertEquals(person1.getPhoneNumber(), personRecord1.phoneNumber());
+assertEquals(person1.getDateOfBirth().toString(), personRecord1.dateOfBirth());
+----
+
+If, for example, our e-mail assertion were to fail we would receive no information on the validity of the address, phone number or date of birth.
+
+Or even earlier, if our main language was wrong we'd just receive something like:
+
+[code]
+----
+org.opentest4j.AssertionFailedError:
+Expected :French
+Actual   :English
+----
+
+=== "Soft" assertion
+
+With soft assertions we bundle our assertions, run them internally and then output all possible failures.
+All our assertions will be executed.
+
+You can set up something for this yourself, or certain libraries also handle this for you as we'll cover later.
+
 
 == Library support
 
