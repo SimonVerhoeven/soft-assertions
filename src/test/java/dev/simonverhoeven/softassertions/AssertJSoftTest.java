@@ -47,8 +47,6 @@ class AssertJSoftTest {
 
         assertSoftly(softAssertions -> {
             softAssertions.assertThat(personRecord2.name()).isEqualTo(person2.getName());
-
-
             softAssertions.assertThat(personRecord1.mainLanguage()).isEqualTo(person2.getMainLanguage());
             softAssertions.assertThat(personRecord2.email()).isEqualTo(person2.getEmail());
             softAssertions.assertThat(personRecord2.address()).isEqualTo(person2.getAddress());
