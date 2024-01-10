@@ -76,10 +76,46 @@ TIP: In case you know of another library that supports soft assertions, please d
 
 TIP: To focus more on the functionality itself the testcase is very basic. We're testing the mapper, and mapping 2 objects. Let's say we're a smidge sleep deprived, and just copied the first assertions rather than extracting them to a method, and forgot to replace some references. With hard assertions we would get a failure on each individual error.
 
-
 === Junit
 
 === AssertJ
+
+AssertJ has a couple different soft assertion methods as can be seen in https://assertj.github.io/doc/#assertj-core-soft-assertions[their documentation].
+We can write our own soft assertions, make use of an injected `SofAssertions` parameter, ... to tell AssertJ to aggregate the errors.
+But let's keep it easy, and clear and make use of the static `assertSoftly` method.
+
+[code,java]
+----
+assertSoftly(softAssertions -> {
+    softAssertions.assertThat(personRecord2.name()).isEqualTo(person2.getName());
+    softAssertions.assertThat(personRecord1.mainLanguage()).isEqualTo(person2.getMainLanguage());
+    softAssertions.assertThat(personRecord2.email()).isEqualTo(person2.getEmail());
+    softAssertions.assertThat(personRecord2.address()).isEqualTo(person2.getAddress());
+    softAssertions.assertThat(personRecord1.phoneNumber()).isEqualTo(person2.getPhoneNumber());
+    softAssertions.assertThat(personRecord1.dateOfBirth()).isEqualTo(person2.getDateOfBirth().toString());
+});
+----
+
+Rather than immediately failing on the second assertion, we'll get an error on the 2nd, 5th and 6th assertion.
+
+[code]
+----
+org.assertj.core.error.AssertJMultipleFailuresError:
+Multiple Failures (3 failures)
+-- failure 1 --
+expected: "French"
+but was: "English"
+at AssertJSoftTest.lambda$softAssert$1(AssertJSoftTest.java:50)
+-- failure 2 --
+expected: "555-5678"
+but was: "555-1234"
+at AssertJSoftTest.lambda$softAssert$1(AssertJSoftTest.java:53)
+-- failure 3 --
+expected: "1982-04-01"
+but was: "1980-12-01"
+at AssertJSoftTest.lambda$softAssert$1(AssertJSoftTest.java:54)
+----
+
 
 === TestNG
 
