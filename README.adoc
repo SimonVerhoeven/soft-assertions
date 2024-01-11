@@ -74,7 +74,7 @@ As of the moment of writing Truth does have an open pull request for this, but i
 
 TIP: In case you know of another library that supports soft assertions, please do let me know and I'll add it to this list.
 
-TIP: To focus more on the functionality itself the testcase is very basic. We're testing the mapper, and mapping 2 objects. Let's say we're a smidge sleep deprived, and just copied the first assertions rather than extracting them to a method, and forgot to replace some references. With hard assertions we would get a failure on each individual error.
+TIP: To focus more on the functionality itself the testcase is very basic. We're testing the mapper, and mapping 2 objects. Let's say we're a smidge sleep-deprived, and just copied the first assertions rather than extracting them to a method, and forgot to replace some references. With hard assertions we would get a failure on each individual error.
 
 === Junit
 
