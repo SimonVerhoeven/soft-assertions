@@ -76,7 +76,43 @@ TIP: In case you know of another library that supports soft assertions, please d
 
 TIP: To focus more on the functionality itself the testcase is very basic. We're testing the mapper, and mapping 2 objects. Let's say we're a smidge sleep-deprived, and just copied the first assertions rather than extracting them to a method, and forgot to replace some references. With hard assertions we would get a failure on each individual error.
 
-=== Junit
+=== Junit 5
+
+JUnit makes it easy for us, we merely need to statically import `assertAll`
+
+[code,java]
+----
+assertAll("Person 2",
+    () -> assertEquals(person2.getName(), personRecord2.name()),
+    () -> assertEquals(person2.getMainLanguage(), personRecord1.mainLanguage()),
+    () -> assertEquals(person2.getEmail(), personRecord2.email()),
+    () -> assertEquals(person2.getAddress(), personRecord2.address()),
+    () -> assertEquals(person2.getPhoneNumber(), personRecord1.phoneNumber()),
+    () -> assertEquals(person2.getDateOfBirth().toString(), personRecord1.dateOfBirth())
+);
+----
+
+And then we get a clear output:
+----
+org.opentest4j.MultipleFailuresError: Person 2 (3 failures)
+	org.opentest4j.AssertionFailedError: expected: <French> but was: <English>
+	org.opentest4j.AssertionFailedError: expected: <555-5678> but was: <555-1234>
+	org.opentest4j.AssertionFailedError: expected: <1982-04-01> but was: <1980-12-01>
+
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:80)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:44)
+	at org.junit.jupiter.api.Assertions.assertAll(Assertions.java:2961)
+	at dev.simonverhoeven.softassertions.JUnitSoftTest.softAssert(JUnitSoftTest.java:48)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	Suppressed: org.opentest4j.AssertionFailedError: expected: <French> but was: <English>
+		...
+	Suppressed: org.opentest4j.AssertionFailedError: expected: <555-5678> but was: <555-1234>
+		...
+	Suppressed: org.opentest4j.AssertionFailedError: expected: <1982-04-01> but was: <1980-12-01>
+		...
+----
 
 === AssertJ
 
