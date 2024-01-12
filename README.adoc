@@ -152,8 +152,38 @@ but was: "1980-12-01"
 at AssertJSoftTest.lambda$softAssert$1(AssertJSoftTest.java:54)
 ----
 
-
 === TestNG
+
+We can make use of the `SoftAssert` class to group our assertions, and then verify them as a group by invoking `assertAll`.
+
+[code,java]
+----
+var personSoftAssert2 = new SoftAssert();
+personSoftAssert2.assertEquals(person2.getName(), personRecord2.name());
+personSoftAssert2.assertEquals(person2.getMainLanguage(), personRecord1.mainLanguage());
+personSoftAssert2.assertEquals(person2.getEmail(), personRecord2.email());
+personSoftAssert2.assertEquals(person2.getAddress(), personRecord2.address());
+personSoftAssert2.assertEquals(person2.getPhoneNumber(), personRecord1.phoneNumber());
+personSoftAssert2.assertEquals(person2.getDateOfBirth().toString(), personRecord1.dateOfBirth());
+personSoftAssert2.assertAll();
+----
+
+Which results in a very clean
+
+[code]
+----
+java.lang.AssertionError: The following asserts failed:
+	expected [English] but found [French],
+	expected [555-1234] but found [555-5678],
+	expected [1980-12-01] but found [1982-04-01]
+
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at dev.simonverhoeven.softassertions.TestNGSoftTest.softAssert(TestNGSoftTest.java:54)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+----
 
 == Takeaway
 
