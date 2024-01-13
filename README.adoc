@@ -187,6 +187,31 @@ java.lang.AssertionError: The following asserts failed:
 
 == Takeaway
 
+Using the concept of soft-assertions makes testing the impact of our changes on a single object a lot more convenient, and reduces the potential need for reruns. You can always brew your own variant for this, but these three libraries have very nice support for the concept.
+And please do experiment, for example you can write custom soft-assertions in AssertJ by doing:
+
+[code,java]
+----
+public class CustomPersonSoftAssertion extends AbstractAssert<CustomPersonSoftAssertion, Person> {
+    public CustomPersonSoftAssertion(Person person) {
+        super(person, CustomPersonSoftAssertion.class);
+    }
+
+    CustomPersonSoftAssertion hasName() {
+        Assertions.assertThat(actual.getName())
+                .describedAs("Name")
+                .isNotBlank();
+        return this;
+    }
+
+    //...
+
+    static CustomPersonSoftAssertion assertThat(Person person) {
+        return new CustomPersonSoftAssertion(person);
+    }
+}
+----
+
 == References
 
 * https://github.com/SimonVerhoeven/soft-assertions[This repository]
