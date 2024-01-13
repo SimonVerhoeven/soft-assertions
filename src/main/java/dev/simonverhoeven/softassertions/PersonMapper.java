@@ -1,7 +1,5 @@
 package dev.simonverhoeven.softassertions;
 
-import java.text.SimpleDateFormat;
-
 public class PersonMapper {
 
     public static PersonDTO entityToRecord(Person person) {
