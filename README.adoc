@@ -1,4 +1,4 @@
-= Soft Assertions - demo
+= Soft Assertions - testing kindly
 :toc:
 :toc-placement:
 :toclevels: 3
@@ -188,7 +188,8 @@ java.lang.AssertionError: The following asserts failed:
 == Takeaway
 
 Using the concept of soft-assertions makes testing the impact of our changes on a single object a lot more convenient, and reduces the potential need for reruns. You can always brew your own variant for this, but these three libraries have very nice support for the concept.
-And please do experiment, for example you can write custom soft-assertions in AssertJ by doing:
+
+And please do experiment, for example you can write custom (soft-)assertions in AssertJ by doing:
 
 [code,java]
 ----
@@ -210,11 +211,18 @@ public class CustomPersonSoftAssertion extends AbstractAssert<CustomPersonSoftAs
         return new CustomPersonSoftAssertion(person);
     }
 }
+
+public class CustomAssertJSoftAssertions extends SoftAssertions {
+
+    public CustomPersonSoftAssertion assertThat(Person actual) {
+        return proxy(CustomPersonSoftAssertion.class, Person.class, actual);
+    }
+}
 ----
 
 == References
 
-* https://github.com/SimonVerhoeven/soft-assertions[This repository]
+* https://github.com/SimonVerhoeven/soft-assertions[The article repository] containing the code snippets
 * https://junit.org/junit5/[JUnit]
 * https://github.com/assertj/assertj[AssertJ]
 * https://github.com/hamcrest/JavaHamcrest[Hamcrest]

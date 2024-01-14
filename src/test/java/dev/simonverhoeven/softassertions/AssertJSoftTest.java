@@ -54,4 +54,28 @@ class AssertJSoftTest {
             softAssertions.assertThat(personRecord1.dateOfBirth()).isEqualTo(person2.getDateOfBirth().toString());
         });
     }
+
+
+
+    @Test
+    void customSoftAssert() {
+        Person person = new Person(
+                "John Doe",
+                "English",
+                "john.doe@example.com",
+                "123 Main St",
+                "555-1234",
+                LocalDate.of(1980, Month.DECEMBER, 1)
+        );
+
+        var softly = new CustomAssertJSoftAssertions();
+        softly.assertThat(person).hasName()
+                .hasMainLanguage("French")
+                .hasEmail("jane.doe@example.com")
+                .hasAddress("Main St 123")
+                .hasPhoneNumber("1234-555")
+                .hasDateOfBirth(LocalDate.of(1972, Month.JANUARY, 1));
+
+        softly.assertAll();;
+    }
 }
